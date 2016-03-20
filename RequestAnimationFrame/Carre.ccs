@@ -1,0 +1,9 @@
+#carreRouge
+{
+	background-color: red;
+	height:50px;
+	width:50px;
+	position:absolute;
+	right:0px;
+	top:0px;
+}
