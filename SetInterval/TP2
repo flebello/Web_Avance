@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="tp2.css">
+	<title>Deplacement carre rouge</title>
+
+	<script>
+		var intervalID;
+		var compteur = 0;
+	
+		function init() 
+		{
+			intervalID = setInterval(deplacement, 100);
+		}
+
+		function deplacement ()
+		{
+			var div = document.getElementById("carre");
+			if (compteur+50>=document.body.clientWidth)
+			{
+				stop();
+			}
+			else 
+			{
+				compteur=compteur+10;
+				div.style.left=compteur+"px";
+			}
+		}
+
+
+
+		function stop() 
+		{
+			clearInterval(intervalID);
+		}
+
+
+
+	</script>
+</head>
+<body onload = "init()">
+	<div id="carre">
+	</div>
+</body>
+</html>
