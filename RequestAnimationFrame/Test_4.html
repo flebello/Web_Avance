@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="carreRouge.css">
+	<title>RequestAnimationFrame</title>
+
+	
+</head>
+<body >
+	<div id="carreRouge">
+	</div>
+</body>
+<script>
+	var animationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	var elem = document.getElementById("carreRouge");
+	var right = 0;
+	var start=null;
+	var date;
+	var lastDate=new Date();
+	var curDate;
+	var delta;
+	var y=0;
+				
+	function step(timestamp) {
+		var progress;
+		if (start === null)
+		{
+			start = timestamp;
+		}
+ 		progress = timestamp - start;
+		pausecomp(100);
+		curDate=new Date();
+		delta = curDate-lastDate;
+		lastDate=curDate;
+		y=y+(delta*10/16);
+		elem.style.right = ( right += y) + "px";
+		if(right < 400 && delta < 160)	//plafonnement intervalle d'inactivité
+		{
+			requestAnimationFrame(step);
+		}
+	}
+
+	requestAnimationFrame(step);
+
+	function pausecomp(millis) 
+	{
+		var date = new Date();
+		var curDate = null;
+		do { 
+			curDate = new Date(); 
+		} while(curDate-date < millis);
+	}
+		
+		
+</script>
+</html>
