@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Un jeu !</title>
+		<style>
+			#piece {
+				display:none; 	//Pour ne pas afficher l'image d'origine...
+			}
+		</style>
+	</head>
+	<body>
+		<canvas  id="canvas"></canvas>
+		<img id ="piece" src="images/coin-sprite-animation.png"/>
+	</body>
+	<script>
+		var animationFrame = window.requestAnimationFrame ||
+								 window.mozRequestAnimationFrame ||
+              				 window.webkitRequestAnimationFrame ||
+								 window.msRequestAnimationFrame;
+		
+		
+		
+		var elem = document.getElementById("piece");
+
+		var compteur = 0;	//On partitionne le sprite
+		var sx;			//Abscisse où on commence à sélectionner sur l'image d'origine
+		var sy=0;		//Ordonnée où on commence à sélectionner sur l'image d'origine
+		var swidth=100;		//Largeur de l'image sélectionner
+		var sheight=100;	//Longueur de l'image sélectionner
+		var x=150;		//L'abscisse où est placé l'image
+		var y=0; 		//L'ordonnée où est placé l'image
+		var width=100; 		//Largeur à utiliser sur l'écran
+		var height=100; 	//Longueur à utiliser sur l'écran
+
+		animationFrame(draw);
+
+		function draw()
+		{
+			if (compteur == 10)
+			{
+				compteur = 0;
+			}
+  			var canvas = document.getElementById("canvas");
+			var ctx=canvas.getContext("2d");
+			ctx.clearRect(x,y,width,height); 	//On réinitialise l'image afficher sur l'écran
+			sx=compteur*100;
+  			ctx.drawImage(elem,sx,sy,swidth,sheight,x,y,width,height); 	//On affiche une nouvelle image
+			compteur++;
+			animationFrame(draw);
+		}
+
+	</script>
+</html>
