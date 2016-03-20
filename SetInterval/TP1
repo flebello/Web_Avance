@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>compteur</title>
+
+<script>
+	var intervalID;
+	var compteur = 10;
+	
+	function init() 
+	{
+		intervalID = setInterval(comptage, 1000);
+	}
+
+	function comptage() 
+	{
+		var div = document.getElementById("mon_compteur");
+		div.textContent = compteur;
+		if (compteur <= 0)
+		{
+			stop();
+		}
+		else 
+		{
+			compteur=compteur-1;
+		}
+
+	}
+
+
+
+	function stop() 
+	{
+		clearInterval(intervalID);
+	}
+
+
+
+</script>
+</head>
+<body onload = "init()">
+	<div id="mon_compteur">
+	</div>
+</body>
+</html>
