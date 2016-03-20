@@ -16,6 +16,11 @@
 	var elem = document.getElementById("carreRouge");
 	var right = 0;
 	var start=null;
+	var date;
+	var lastDate=new Date();
+	var curDate;
+	var delta;
+	var y=0;
 				
 	function step(timestamp) {
 		var progress;
@@ -25,8 +30,12 @@
 		}
  		progress = timestamp - start;
 		pausecomp(100);
-		elem.style.right = Math.min(progress/10, 200) + "px";
-		if(right < 2000)	
+		curDate=new Date();
+		delta = curDate-lastDate;
+		lastDate=curDate;
+		y=y+(delta*10/16);
+		elem.style.right = ( right += y) + "px";
+		if(right < 400)	
 		{
 			requestAnimationFrame(step);
 		}
