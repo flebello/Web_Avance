@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="carreRouge.css">
+	<title></title>
+
+	
+</head>
+<body >
+	<div id="carreRouge">
+	</div>
+</body>
+<script>
+		var elem = document.getElementById("carreRouge");
+		var right = 0;
+		var timer;
+		var millis=100;
+		timer = setInterval(function() {
+			elem.style.right = ( right += 10 ) + "px";
+			//Au bout de 200px on introduit une temporisation
+			if ( right > 200 ) {
+				pausecomp( millis );
+			}
+			if ( right > 400 ) {
+				clearInterval( timer );
+			}
+		}, 16);
+		
+		function pausecomp(millis) 
+		{
+			var date = new Date();
+			var curDate = null;
+			do { 
+				curDate = new Date(); 
+			} while(curDate-date < millis);
+		}
+		</script>
+</html>
